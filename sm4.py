@@ -1,4 +1,4 @@
-# SM4 S盒
+# SM4 Sbox
 SBOX = [
     0xd6, 0x90, 0xe9, 0xfe, 0xcc, 0xe1, 0x3d, 0xb7,
     0x16, 0xb6, 0x14, 0xc2, 0x28, 0xfb, 0x2c, 0x05,
@@ -78,9 +78,8 @@ def sm4_encrypt_block(data_block, rk):
         X.append(X[i] ^ L1(tau(tmp)))
     return b''.join((X[35-i]).to_bytes(4, 'big') for i in range(4))
 
-# 示例
-key = b'0123456789abcdef'         # 128-bit key
-plaintext = b'0123456789abcdeF'   # 16 bytes block
+key = b'0123456789abcdef'        
+plaintext = b'0123456789abcdeF'   
 
 rk = key_expansion(key)
 ciphertext = sm4_encrypt_block(plaintext, rk)
